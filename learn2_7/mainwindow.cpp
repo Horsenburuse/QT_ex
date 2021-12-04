@@ -1,9 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFile>
 #include <QFileDialog>
+#include <QString>
 #include <QVBoxLayout>
 #include <QToolButton>
 #include <QSpinBox>
+#include <QMdiArea>
+#include <QMdiSubWindow>
+#include <QLabel>
+#include <QFrame>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -52,6 +58,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mainToolBar->addWidget(toolBth);
     QSpinBox *spinbox = new QSpinBox(this);
     ui->mainToolBar->addWidget(spinbox);
+
+    //加入中心部件
+    this->Tarea = new QMdiArea(this);
+    this->setCentralWidget(this->Tarea);
+
+    //显示状态栏
+    ui->statusBar->showMessage(tr("欢迎实用信号处理文件编辑器"),2000);
+    QLabel *lb = new QLabel(this);
+    lb->setFrameStyle(QFrame::Box | QFrame::Sunken);
+    lb->setText("1.txt");
+    ui->statusBar->addPermanentWidget(lb);
 }
 
 MainWindow::~MainWindow()
@@ -61,7 +78,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_action_New_triggered()
 {
-    QFileDialog::getOpenFileName();
+    edit = new QTextEdit(this);
+    QMdiSubWindow *child = this->Tarea->addSubWindow(edit);
+    child->setWindowTitle(tr("多文档编辑器子窗口"));
+    child->setWindowIcon(QIcon(":/image/images/2.jpg"));
+    child->show();
 }
 
 Twidget::Twidget(QWidget *parent):
@@ -96,4 +117,21 @@ Twidget::Twidget(QWidget *parent):
 Twidget::~Twidget()
 {
 
+}
+
+void MainWindow::on_actionShow_Dock_D_triggered()
+{
+    ui->dockWidget_2->show();
+}
+
+void MainWindow::on_actionOpen_file_O_triggered()
+{
+    Tshow = new QTextEdit(tr("文本内容"));
+    QString filename = QFileDialog :: getOpenFileName();
+    QFile f(filename);
+    f.open(QIODevice::ReadWrite);
+    QByteArray buf = f.readAll();
+    f.close();
+    Tshow->setText(buf);
+    Tshow->show();
 }
