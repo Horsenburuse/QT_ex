@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>images/456965.jpg</file>
+        <file>images/468739.jpg</file>
+        <file>images/550127.jpg</file>
+        <file>images/552626.jpg</file>
+        <file>images/678401.jpg</file>
+        <file>images/932961.jpg</file>
+        <file>images/936378.jpg</file>
+        <file>images/976013.jpg</file>
+        <file>images/1076947.jpg</file>
+        <file>images/beautiful.jpg</file>
+        <file>images/bg-5199699.jpg</file>
+        <file>images/new.jpg</file>
+        <file>images/open.jpg</file>
+        <file>images/wallhaven-oxewj7.jpg</file>
+    </qresource>
+</RCC>
