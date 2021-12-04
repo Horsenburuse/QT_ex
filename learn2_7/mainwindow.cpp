@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QVBoxLayout>
+#include <QToolButton>
+#include <QSpinBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,8 +18,21 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(action_Open,&QAction::triggered,[&](){
          QFileDialog::getOpenFileName();
     });
+    QActionGroup * group = new QActionGroup(this);
+    QAction *action_L= group->addAction(tr("左对齐(&L)"));
+    action_L->setCheckable(true);
+    QAction *action_R= group->addAction(tr("右对齐(&R)"));
+    action_R->setCheckable(true);
+    QAction *action_C= group->addAction(tr("居中(&C)"));
+    action_C->setCheckable(true);
+    action_L->setChecked(true);
+    editMenu ->addSeparator();
+    editMenu ->addAction(action_L);
+    editMenu ->addAction(action_R);
+    editMenu ->addAction(action_C);
+
     //加入工具菜单
-    QMenu *toolMenu = new QMenu();
+    QMenu *toolMenu = ui->menuBar->addMenu(tr("工具(&T)"));
     QAction *action_tool = toolMenu->addAction(QIcon(":/newimage/images/1.jpg"),tr("工具(&T)"));
     action_tool->setShortcut(QKeySequence("Ctrl+T"));
     ui->mainToolBar->addAction(action_tool);
@@ -25,6 +40,18 @@ MainWindow::MainWindow(QWidget *parent) :
         Twidget * tw = new Twidget();
         tw->show();
     });
+
+    //加入工具栏
+    QToolButton *toolBth = new QToolButton();
+    toolBth->setText(tr("颜色"));
+    QMenu * colorMenu = new QMenu(this);
+    colorMenu->addAction(tr("红色"));
+    colorMenu->addAction(tr("绿色"));
+    toolBth->setMenu(colorMenu);
+    toolBth->setPopupMode(QToolButton::MenuButtonPopup);
+    ui->mainToolBar->addWidget(toolBth);
+    QSpinBox *spinbox = new QSpinBox(this);
+    ui->mainToolBar->addWidget(spinbox);
 }
 
 MainWindow::~MainWindow()
