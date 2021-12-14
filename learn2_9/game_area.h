@@ -35,17 +35,23 @@ public:
     bool HitBottom();
     bool HitTop();
     bool HitSide();
-//    bool CheckBoudary();
 
     void KeyPressed(int key);
     void addFixItem();
     int  deletAllRow();
     int  getspeed();
     void changspeed();
+    item& getNextItem(){
+        return mNextItem;
+    }
 
     int getscore()
     {
         return  this->score;
+    }
+    int getSL()
+    {
+        return  this->speed_level;
     }
 
 protected:
@@ -53,6 +59,8 @@ protected:
     void timerEvent(QTimerEvent *event);
 signals:
     void  signalUpadteScore(int score);
+    void  signalUpadteNI(item mNextItem);
+    void  siganlUpdateSP(int speed_level);
 public slots:
 
 private:

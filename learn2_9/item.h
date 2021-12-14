@@ -32,6 +32,7 @@ public:
     void DeletRow(int y);
     void MoveDown(int Row ,int y);
     void ChangeShape(int nAdd = 1);
+    void CopyPoints(QVector<QPoint> nPoints);
     int  getxMax();
 
     QVector<QPoint>& GetPoints(){

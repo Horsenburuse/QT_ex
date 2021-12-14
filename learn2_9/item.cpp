@@ -3,11 +3,12 @@
 #include <QTime>
 #include <QDebug>
 
-item::item(item_TYPE t,int nShape)
+inline item::item(item_TYPE t,int nShape)
 {
     mPos = QPoint(0,0);
     Inititem(t,nShape);
 };
+
 
 item::~item()
 {};
@@ -257,6 +258,10 @@ int item::getxMax()
     }
     return  x_value;
 };
+
+void item::CopyPoints(QVector<QPoint> nPoints){
+    this->mPoints = nPoints;
+}
 
 
 

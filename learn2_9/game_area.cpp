@@ -168,11 +168,20 @@ void Game_area::timerEvent(QTimerEvent *event)
             mCurItem.Moveto(DEFAULT_BORNP_POS_X,0);
             mNextItem.InitNew(static_cast<unsigned int>(QTime::currentTime().msec()));
         }
+        if (HitTop())
+        {
+            killTimer(TimeID);
+            QMessageBox::information(NULL, "GAME OVER", "GAME OVER", QMessageBox::Yes , QMessageBox::Yes);
+            NewGame();
+            return;
+        }
         if(DR_num)
             score += (DR_num*100 + (DR_num-1)*100);
             qDebug()<<score;
             emit signalUpadteScore(score);
     }
+    emit signalUpadteNI(mNextItem);
+    emit siganlUpdateSP(speed_level);
 }
 
 void Game_area::addFixItem()
