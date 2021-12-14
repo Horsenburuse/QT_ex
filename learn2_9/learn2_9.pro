@@ -29,15 +29,20 @@ SOURCES += \
         mainwindow.cpp \
     game_area.cpp \
     item.cpp \
+    dialog.cpp \
+    nextarea.cpp
 
 HEADERS += \
         mainwindow.h \
     game_area.h \
     item.h \
+    dialog.h \
+    nextarea.h
 
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    dialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

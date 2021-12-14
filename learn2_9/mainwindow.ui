@@ -27,10 +27,20 @@
    <widget class="QLCDNumber" name="lcdNumber">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>830</x>
       <y>0</y>
-      <width>141</width>
-      <height>51</height>
+      <width>150</width>
+      <height>50</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>90</y>
+      <width>150</width>
+      <height>200</height>
      </rect>
     </property>
    </widget>

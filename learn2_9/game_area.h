@@ -15,7 +15,7 @@
 #define C_NUM   20 //列数
 #define R_NUM   20 //行数
 #define AREA_COLUMES R_NUM*RECT_H
-#define AREA_ROWS    C_NUM*RECT_W
+#define AREA_ROWS    (C_NUM+3)*RECT_W
 
 //item出现的初始位置
 #define DEFAULT_BORNP_POS_X  (qrand()%(C_NUM-3))

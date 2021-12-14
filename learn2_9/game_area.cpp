@@ -13,6 +13,7 @@ Game_area::Game_area(QWidget *parent) : QWidget(parent)
     NewGame();
 }
 
+//创建新的游戏的方块
 void Game_area:: NewGame(){
     mCurItem.InitNew(static_cast<unsigned int>(QTime::currentTime().second()));
     mCurItem.Moveto(DEFAULT_BORNP_POS_X,0);
@@ -20,12 +21,12 @@ void Game_area:: NewGame(){
     qDebug() << tr("创建");
 };
 
-void Game_area :: DrawBKRects()
+void Game_area :: DrawBKRects()//绘制方块操作背景
 {
     QPainter painter(this);
     painter.setBrush(QColor("#008789"));
     painter.setPen(Qt::NoPen);
-    for (int i = 0; i < (C_NUM); ++i) {
+    for (int i = 0; i <= (C_NUM-1); ++i) {
         for (int j = 0; j < (R_NUM); ++j) {
                 painter.drawRect(i*RECT_W,j*RECT_H,RECT_W,RECT_H);
             }
@@ -47,8 +48,8 @@ void Game_area ::DrawFixItem(){
     mFixItem.Draw(painter,0,0,RECT_W,RECT_H);
 }
 
-bool Game_area::HitBottom()
-{
+//方块触底
+bool Game_area::HitBottom(){
     for (int i = 0; i < mCurItem.GetPoints().size(); ++i) {
         QPoint pt = mCurItem.GetPoints()[i];
         if(pt.y() >=  R_NUM){
@@ -62,7 +63,7 @@ bool Game_area::HitBottom()
     }
     return  false;
 }
-
+//方块到顶
 bool Game_area::HitTop(){
     for (int i = 0; i < mFixItem.GetPoints().size(); ++i) {
         if(mFixItem.GetPoints()[i].y() <= 1)
@@ -70,11 +71,11 @@ bool Game_area::HitTop(){
     }
     return  false;
 }
-
+//方块碰触边界
 bool Game_area::HitSide(){
     for (int i = 0; i < mCurItem.GetPoints().size(); ++i) {
         QPoint pt = mCurItem.GetPoints()[i];
-        if(pt.x() <  0 || pt.x() >= C_NUM){
+        if(pt.x() < 0 || pt.x() >= C_NUM){
             qDebug()<<"碰壁" << pt.x() << -0;
             return true;
         }
@@ -111,7 +112,7 @@ void Game_area::KeyPressed(int key){
         else {
             mCurItem.ChangeShape(1);
         }
-        return;
+        break;
     }
     case Qt::Key_Right:
     {
@@ -139,12 +140,16 @@ void Game_area::KeyPressed(int key){
     }
     }
     mCurItem.Move(x,y);
+    while (mCurItem.getxMax() >= C_NUM) {
+        qDebug()<<tr("超出背景");
+        mCurItem.Move(-1,0);
+    }
 
     if (HitSide() || HitBottom())
     {
         mCurItem.Move(-x,-y);
     }
-
+    return;
 }
 
 void Game_area::timerEvent(QTimerEvent *event)
@@ -163,8 +168,9 @@ void Game_area::timerEvent(QTimerEvent *event)
             mCurItem.Moveto(DEFAULT_BORNP_POS_X,0);
             mNextItem.InitNew(static_cast<unsigned int>(QTime::currentTime().msec()));
         }
-        score += (DR_num*100 + (DR_num-1)*100);
         if(DR_num)
+            score += (DR_num*100 + (DR_num-1)*100);
+            qDebug()<<score;
             emit signalUpadteScore(score);
     }
 }

@@ -36,15 +36,10 @@ void item::Inititem(item_TYPE t,int nShape)
     case item_1:
         {
             if(nShape%2 == 0)
-            {   if(mPos.x()+3 <= 19)
-                {
+            {
                     for (int i = 0; i < 4; ++i) {
                         mPoints.append(mPos + QPoint(i,1));
                     }
-                }
-                else {
-                    mPoints = mPoints;
-                }
             }
             else if (nShape%2 == 1) {
                 for (int i = 0; i < 4; ++i) {
@@ -57,40 +52,28 @@ void item::Inititem(item_TYPE t,int nShape)
         {
             if(nShape == 0)
             {
-              if(mPos.x()+2 <= 19)
-              {
                   mPoints.append(mPos + QPoint(1,0));
                   mPoints.append(mPos + QPoint(0,1));
                   mPoints.append(mPos + QPoint(1,1));
                   mPoints.append(mPos + QPoint(2,1));
-              }
             }
             else if (nShape == 1) {
-              if(mPos.x()+2 <= 19)
-              {
                   mPoints.append(mPos + QPoint(0,0));
                   mPoints.append(mPos + QPoint(1,0));
                   mPoints.append(mPos + QPoint(2,0));
                   mPoints.append(mPos + QPoint(1,1));
-              }
            }
             else if (nShape == 2) {
-              if(mPos.x()+1 <= 19)
-              {
                   mPoints.append(mPos + QPoint(0,0));
                   mPoints.append(mPos + QPoint(0,1));
                   mPoints.append(mPos + QPoint(0,2));
                   mPoints.append(mPos + QPoint(1,1));
-              }
             }
             else if (nShape == 3) {
-              if(mPos.x()+1 <= 19)
-              {
                   mPoints.append(mPos + QPoint(0,1));
                   mPoints.append(mPos + QPoint(1,1));
                   mPoints.append(mPos + QPoint(1,2));
                   mPoints.append(mPos + QPoint(1,0));
-              }
             }
            break;
         }
@@ -98,40 +81,28 @@ void item::Inititem(item_TYPE t,int nShape)
         {
             if(nShape == 0)
             {
-              if(mPos.x()+3 <= 19)
-              {
                   mPoints.append(mPos + QPoint(1,0));
                   mPoints.append(mPos + QPoint(1,1));
                   mPoints.append(mPos + QPoint(2,1));
                   mPoints.append(mPos + QPoint(3,1));
-              }
             }
             else if (nShape == 1) {
-              if(mPos.x()+2 <= 19)
-              {
                   mPoints.append(mPos + QPoint(1,0));
                   mPoints.append(mPos + QPoint(2,0));
                   mPoints.append(mPos + QPoint(1,1));
                   mPoints.append(mPos + QPoint(1,2));
-              }
            }
             else if (nShape == 2) {
-              if(mPos.x()+3 <= 19)
-              {
                   mPoints.append(mPos + QPoint(1,0));
                   mPoints.append(mPos + QPoint(2,0));
                   mPoints.append(mPos + QPoint(3,0));
                   mPoints.append(mPos + QPoint(3,1));
-              }
             }
             else if (nShape == 3) {
-              if(mPos.x()+2 <= 19)
-              {
                   mPoints.append(mPos + QPoint(2,0));
                   mPoints.append(mPos + QPoint(2,1));
                   mPoints.append(mPos + QPoint(2,2));
                   mPoints.append(mPos + QPoint(1,2));
-              }
             }
            break;
         }
