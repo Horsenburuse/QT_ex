@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     });
 
     connect(ui->widgetGameArea,&Game_area::signalUpadteNI,[&](){
-        this->ui->widget1->setShowItem(ui->widgetGameArea->getNextItem());
+        this->ui->widget->setShowItem(ui->widgetGameArea->getNextItem());
     });
 
     connect(ui->widgetGameArea, &Game_area::siganlUpdateSP,[&](){

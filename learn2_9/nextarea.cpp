@@ -15,7 +15,8 @@ void NextArea::paintEvent(QPaintEvent *event){
 
 void NextArea::DrawBkRects(){
     QPainter painter(this);
-    painter.setBrush(QColor("#ffffdd"));
+//    painter.setBrush(QColor("#ffffdd"));
+    painter.setBrush(QBrush(QPixmap(":/image/images/2.jpg")));
     painter.setPen(Qt::NoPen);
     for (int i = 0; i < NAR_NUM; ++i) {
         for (int j = 0; j < NAR_NUM; ++j) {

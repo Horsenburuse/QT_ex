@@ -19,6 +19,8 @@ public:
 signals:
     void signalStart();
     void signalExit();
+protected:
+    void paintEvent();
 private:
     Ui::Dialog *ui;
 };

@@ -14,6 +14,8 @@ signals:
     void signalRestart();
     void signalExit();
 
+protected:
+    void paintEvent(QPaintEvent *event);
 public slots:
 private:
     QPushButton *button_restart;

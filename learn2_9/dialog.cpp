@@ -1,6 +1,8 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 #include <QToolButton>
+#include <QPainter>
+#include <QPixmap>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -13,10 +15,21 @@ Dialog::Dialog(QWidget *parent) :
     connect(ui->pushButton_close,&QToolButton::clicked,[&](){
         emit signalExit();
     });
+    this->paintEvent();
 }
+
 
 
 Dialog::~Dialog()
 {
     delete ui;
+}
+
+
+void Dialog::paintEvent()
+{
+    QPainter painter(this);
+    painter.drawPixmap(rect(),QPixmap(":/image/images/open.jpg"),QRect());
+    update();
+
 }

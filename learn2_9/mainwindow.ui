@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(116, 255, 255);
+border-top-color: rgb(60, 96, 255);
+</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="Game_area" name="widgetGameArea" native="true">
     <property name="geometry">
@@ -53,7 +58,7 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="1">
        <widget class="QLabel" name="label_1">

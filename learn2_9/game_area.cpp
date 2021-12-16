@@ -18,7 +18,7 @@ void Game_area:: NewGame(){
     QVector<QPoint> init_points;
     init_points.clear();
     TimeID = startTimer(1000);
-    mFixItem.CopyPoints(init_points);//清空上一局的方块
+    mFixItem.CopyPoints(init_points);//清空上一局的
     mCurItem.InitNew(static_cast<unsigned int>(QTime::currentTime().second()));
     mCurItem.Moveto(DEFAULT_BORNP_POS_X,0);
     mNextItem.InitNew(static_cast<unsigned int>(QTime::currentTime().msec()));
@@ -28,7 +28,8 @@ void Game_area:: NewGame(){
 void Game_area :: DrawBKRects()//绘制方块操作背景
 {
     QPainter painter(this);
-    painter.setBrush(QColor("#008789"));
+//    painter.setBrush(QColor("#008789"));
+    painter.setBrush(QBrush(QPixmap(":/image/images/new.jpg")));
     painter.setPen(Qt::NoPen);
     for (int i = 0; i <= (C_NUM-1); ++i) {
         for (int j = 0; j < (R_NUM); ++j) {
@@ -37,18 +38,19 @@ void Game_area :: DrawBKRects()//绘制方块操作背景
         }
     }
 
-void Game_area :: DrawCurItem()
+void Game_area :: DrawCurItem()//绘制移动方块
 {
     QPainter painter(this);
     painter.setBrush(QColor("#FFDEAD"));
-    painter.setPen(QPen(QColor(Qt::red),1));
+//    painter.setBrush(QBrush(QPixmap(":/image/images/2.jpg")));
+    painter.setPen(QPen(QColor(Qt::black),1));
     mCurItem.Draw(painter,0,0,RECT_W,RECT_H);
 }
 
 void Game_area ::DrawFixItem(){
     QPainter painter(this);
-    painter.setBrush(QColor("#AADEAD"));
-    painter.setPen(QPen(QColor(Qt::red),1));
+    painter.setBrush(QBrush(QPixmap(":/image/images/2.jpg")));
+    painter.setPen(Qt::NoPen);
     mFixItem.Draw(painter,0,0,RECT_W,RECT_H);
 }
 
