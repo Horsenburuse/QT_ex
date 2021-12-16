@@ -30,14 +30,16 @@ SOURCES += \
     game_area.cpp \
     item.cpp \
     dialog.cpp \
-    nextarea.cpp
+    nextarea.cpp \
+    overdlg.cpp
 
 HEADERS += \
         mainwindow.h \
     game_area.h \
     item.h \
     dialog.h \
-    nextarea.h
+    nextarea.h \
+    overdlg.h
 
 
 FORMS += \

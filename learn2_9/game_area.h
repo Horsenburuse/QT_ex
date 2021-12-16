@@ -61,6 +61,7 @@ signals:
     void  signalUpadteScore(int score);
     void  signalUpadteNI(item mNextItem);
     void  siganlUpdateSP(int speed_level);
+    void  signalGameover();
 public slots:
 
 private:

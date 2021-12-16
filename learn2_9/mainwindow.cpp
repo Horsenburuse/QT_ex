@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QString>
 #include <QFont>
+#include <QToolButton>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,6 +11,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->lcdNumber->setMinimumHeight(50);
     ui->lcdNumber->display(ui->widgetGameArea->getscore());
+    logdlg = new Dialog();
+    exitdlg = new overdlg();
+    logdlg->show();
+    connect(logdlg,&Dialog::signalStart,[&](){
+        logdlg->close();
+        this->show();
+        ui->widgetGameArea->NewGame();
+    });
+    connect(logdlg,&Dialog::signalExit,[&](){
+        logdlg->close();
+        this->close();
+    });
     connect(ui->widgetGameArea,&Game_area::signalUpadteScore,[&](){
         this->ui->lcdNumber->display(QString::number(ui->widgetGameArea->getscore()));
     });
@@ -27,6 +40,17 @@ MainWindow::MainWindow(QWidget *parent) :
         this->ui->label_2->setFont(ft);
         this->ui->label_3->setFont(ft);
 
+    });
+    connect(ui->widgetGameArea,&Game_area::signalGameover,[&](){
+        exitdlg->show();
+    });
+    connect(exitdlg,&overdlg::signalRestart,[&](){
+        exitdlg->close();
+        ui->widgetGameArea->NewGame();
+    });
+    connect(exitdlg,&overdlg::signalExit,[&](){
+        exitdlg->close();
+        this->close();
     });
 }
 

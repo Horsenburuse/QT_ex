@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "dialog.h"
+#include "overdlg.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +19,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Dialog *logdlg;
+    overdlg *exitdlg;
 
 protected:
     void keyPressEvent(QKeyEvent *event);

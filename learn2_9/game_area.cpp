@@ -1,5 +1,6 @@
 #include "game_area.h"
 #include <QTimerEvent>
+#include <QVector>
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QTime>
@@ -9,12 +10,15 @@
 Game_area::Game_area(QWidget *parent) : QWidget(parent)
 {
     setMinimumSize(AREA_ROWS,AREA_COLUMES);
-    TimeID = startTimer(1000);
-    NewGame();
+//    NewGame();
 }
 
 //创建新的游戏的方块
 void Game_area:: NewGame(){
+    QVector<QPoint> init_points;
+    init_points.clear();
+    TimeID = startTimer(1000);
+    mFixItem.CopyPoints(init_points);//清空上一局的方块
     mCurItem.InitNew(static_cast<unsigned int>(QTime::currentTime().second()));
     mCurItem.Moveto(DEFAULT_BORNP_POS_X,0);
     mNextItem.InitNew(static_cast<unsigned int>(QTime::currentTime().msec()));
@@ -171,8 +175,9 @@ void Game_area::timerEvent(QTimerEvent *event)
         if (HitTop())
         {
             killTimer(TimeID);
-            QMessageBox::information(NULL, "GAME OVER", "GAME OVER", QMessageBox::Yes , QMessageBox::Yes);
-            NewGame();
+//            QMessageBox::information(NULL, "GAME OVER", "GAME OVER", QMessageBox::Yes , QMessageBox::Yes);
+//            NewGame();
+            emit signalGameover();
             return;
         }
         if(DR_num)

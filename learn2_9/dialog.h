@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QPushButton>
 
 namespace Ui {
 class Dialog;
@@ -15,6 +16,9 @@ public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
 
+signals:
+    void signalStart();
+    void signalExit();
 private:
     Ui::Dialog *ui;
 };
