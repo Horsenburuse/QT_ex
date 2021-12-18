@@ -29,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->widgetGameArea,&Game_area::signalUpadteNI,[&](){
         this->ui->widget->setShowItem(ui->widgetGameArea->getNextItem());
+        this->ui->widget->setItemColor(ui->widgetGameArea->getColor());
     });
 
     connect(ui->widgetGameArea, &Game_area::siganlUpdateSP,[&](){

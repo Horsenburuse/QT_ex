@@ -53,6 +53,10 @@ public:
     {
         return  this->speed_level;
     }
+    QColor& getColor()
+    {
+        return NItem_color;
+     }
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -68,6 +72,8 @@ private:
     item mCurItem;
     item mNextItem;
     item mFixItem;
+    QColor CItem_color;//移动方块颜色
+    QColor NItem_color;//下一个生成方块颜色
 
     int TimeID;
     int score = 0;

@@ -1,5 +1,6 @@
 #include "nextarea.h"
 #include <QPainter>
+#include <QBrush>
 
 NextArea::NextArea(QWidget *parent) : QWidget(parent)
 {
@@ -18,8 +19,8 @@ void NextArea::DrawBkRects(){
 //    painter.setBrush(QColor("#ffffdd"));
     painter.setBrush(QBrush(QPixmap(":/image/images/2.jpg")));
     painter.setPen(Qt::NoPen);
-    for (int i = 0; i < NAR_NUM; ++i) {
-        for (int j = 0; j < NAR_NUM; ++j) {
+    for (int i = 0; i <= NAR_NUM; ++i) {
+        for (int j = 0; j <= NAR_NUM; ++j) {
             painter.drawRect(i*RECT_W,j*RECT_H,RECT_W,RECT_H);
         }
     }
@@ -27,8 +28,8 @@ void NextArea::DrawBkRects(){
 
 void NextArea::DrawShowItem(){
     QPainter painter(this);
-    painter.setBrush(QColor("#FFDEAD"));
-    painter.setPen(QPen(QColor(Qt::red),1));
+    painter.setBrush(Item_color);
+    painter.setPen(QPen(QColor(Qt::black),1));
     ShowItem.Draw(painter,40,40,RECT_W,RECT_H);
 }
 

@@ -7,8 +7,8 @@
 
 #define RECT_W  40
 #define RECT_H  40
-#define NAC_NUM 5//列数
-#define NAR_NUM 5//行数
+#define NAC_NUM 6//列数
+#define NAR_NUM 6//行数
 
 #define NA_COLUMES  NAR_NUM*RECT_H
 #define NA_ROWS  NAC_NUM*RECT_W
@@ -21,6 +21,10 @@ public:
     void DrawBkRects();
     void DrawShowItem();
     void setShowItem(item& NewItem);
+    void setItemColor(QColor &color)
+    {
+        Item_color = color;
+    }
 signals:
 
 public slots:
@@ -30,6 +34,7 @@ protected:
 
 private:
     item ShowItem;
+    QColor Item_color;
 };
 
 #endif // NEXTAREA_H
