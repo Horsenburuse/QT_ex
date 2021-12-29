@@ -28,6 +28,7 @@ tcpserver::tcpserver(QWidget *parent) :
 void tcpserver::sendMessage(QTcpSocket* clientConnection)
 {   //开辟发送数据,接收数据缓存区
     QByteArray send_block;
+#if 0
     QDataStream out(&send_block,QIODevice::WriteOnly);
 
 //设置数据流版本格式
@@ -36,7 +37,8 @@ void tcpserver::sendMessage(QTcpSocket* clientConnection)
     out << tr("hello TCP!!!").toUtf8();
     out.device()->seek(0);
     out<<(quint16)(send_block.size()-sizeof (quint16));
-
+#endif
+    send_block = tr("hello Tcp").toUtf8();
 //获取建立连接的套接字
     connect(clientConnection,&QTcpSocket::disconnected,clientConnection,&QTcpSocket::deleteLater);
     clientConnection->write(send_block);

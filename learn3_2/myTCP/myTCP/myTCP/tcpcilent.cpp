@@ -40,6 +40,7 @@ void tcpcilent::readMessage()
     ui->textBrowser->append(message);
 #endif
     QByteArray receive_block = cilentSocket->readAll();
+    qDebug()<<receive_block;
     ui->textBrowser->append(receive_block);
 }
 

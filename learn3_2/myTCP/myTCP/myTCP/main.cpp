@@ -1,14 +1,13 @@
 #include "tcpserver.h"
 #include "tcpcilent.h"
+#include "widget.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    tcpcilent w;
-    tcpserver s;
+    Widget w;
     w.show();
-    s.show();
     return a.exec();
 }
